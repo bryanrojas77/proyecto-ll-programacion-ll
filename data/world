@@ -1,0 +1,24 @@
+# Dragon's Keep - World Definition
+# Format for rooms:
+#   ROOM id|name|description
+#   Add [BOSS] anywhere in description to mark the boss room.
+#
+# Format for connections:
+#   CONNECT roomId|north=roomId|south=roomId|east=roomId|west=roomId
+#   (include only the directions that exist)
+
+ROOM r01|Dungeon Entrance|A cold stone corridor. Torches flicker on the walls.
+ROOM r02|Goblin Den|A foul-smelling cave littered with bones and scraps.
+ROOM r03|Ancient Library|Dusty shelves line the walls. Something rustles in the dark.
+ROOM r04|Armory|Rusted weapons hang from the walls. A faint gleam catches the eye.
+ROOM r05|Crypt|Crumbling sarcophagi line the walls. The air is thick with death.
+ROOM r06|Treasure Vault|Gold and jewels glitter everywhere — but something guards them.
+ROOM r07|Dragon's Lair|The ground is scorched. A massive shadow stirs. [BOSS]
+
+CONNECT r01|north=r02|east=r03
+CONNECT r02|south=r01|east=r04
+CONNECT r03|west=r01|north=r04|east=r05
+CONNECT r04|west=r02|south=r03|north=r06
+CONNECT r05|west=r03|north=r07
+CONNECT r06|south=r04|east=r07
+CONNECT r07|west=r06|south=r05

@@ -1,0 +1,12 @@
+# Dragon's Keep - Enemy Placement
+# Format: roomId|type|name
+# Types: goblin, skeleton, dragon
+
+r02|goblin|Gruk the Runt
+r02|goblin|Sneaky Pik
+r03|skeleton|Librarian of the Dead
+r04|skeleton|Iron Guard
+r05|skeleton|Crypt Warden
+r05|goblin|Grave Robber
+r06|skeleton|Vault Sentinel
+r07|dragon|Ignaroth the Ancient
