@@ -1,0 +1,16 @@
+//
+// Created by kathy on 12/6/2026.
+//
+
+#ifndef PROYECTO_LL_PROGRAMACION_LL_EVENTLOG_H
+#define PROYECTO_LL_PROGRAMACION_LL_EVENTLOG_H
+
+
+
+class EventLog {
+
+};
+
+
+
+#endif //PROYECTO_LL_PROGRAMACION_LL_EVENTLOG_H
