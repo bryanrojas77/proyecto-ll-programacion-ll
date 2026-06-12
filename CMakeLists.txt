@@ -17,4 +17,15 @@ add_executable(proyecto_ll_programacion_ll main.cpp
         EventLog.cpp
         EventLog.h
         ReportGenerator.cpp
-        ReportGenerator.h)
+        ReportGenerator.h
+        EnemyFactory.cpp
+        EnemyFactory.h
+        ISimulationObserver.h
+        Simulation.cpp
+        Simulation.h
+        Room.cpp
+        Room.h
+        World.cpp
+        World.h
+        WorldLoader.cpp
+        WorldLoader.h)
