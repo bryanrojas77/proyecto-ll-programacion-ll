@@ -1,7 +1,3 @@
-# Dragon's Keep - Enemy Placement
-# Format: roomId|type|name
-# Types: goblin, skeleton, dragon
-
 r02|goblin|Gruk the Runt
 r02|goblin|Sneaky Pik
 r03|skeleton|Librarian of the Dead

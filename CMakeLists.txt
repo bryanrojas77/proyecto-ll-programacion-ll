@@ -1,17 +1,15 @@
 cmake_minimum_required(VERSION 3.20)
-project(DragonKeep LANGUAGES CXX)
+project(proyecto_ll_programacion_ll LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# All source files
 set(SOURCES
         src/main.cpp
         src/entities/Character.cpp
         src/entities/Hero.cpp
         src/entities/Enemy.cpp
-        src/items/Item.h
         src/world/Room.cpp
         src/world/World.cpp
         src/world/WorldLoader.cpp
@@ -21,19 +19,17 @@ set(SOURCES
         src/output/ReportGenerator.cpp
 )
 
-add_executable(DragonKeep ${SOURCES})
+add_executable(proyecto_ll_programacion_ll ${SOURCES})
 
-target_include_directories(DragonKeep PRIVATE src)
+target_include_directories(proyecto_ll_programacion_ll PRIVATE src)
 
-# Copy data folder next to the executable so relative paths work
-add_custom_command(TARGET DragonKeep POST_BUILD
+add_custom_command(TARGET proyecto_ll_programacion_ll POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/data
-        $<TARGET_FILE_DIR:DragonKeep>/data
+        $<TARGET_FILE_DIR:proyecto_ll_programacion_ll>/data
 )
 
-# Create output directory next to executable
-add_custom_command(TARGET DragonKeep POST_BUILD
+add_custom_command(TARGET proyecto_ll_programacion_ll POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory
-        $<TARGET_FILE_DIR:DragonKeep>/output
+        $<TARGET_FILE_DIR:proyecto_ll_programacion_ll>/output
 )

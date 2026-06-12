@@ -1,7 +1,3 @@
-# Dragon's Keep - Item Placement
-# Format: roomId|type|name|value
-# Types: weapon (attack bonus), potion (heal amount), trap (damage)
-
 r01|potion|Healing Herb|20
 r02|trap|Spike Pit|15
 r03|weapon|Enchanted Dagger|10

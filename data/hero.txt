@@ -1,0 +1,4 @@
+name=Aldric the Brave
+health=120
+attack=18
+defense=5
