@@ -1,8 +1,0 @@
-# Dragon's Keep - Hero Configuration
-# Format: key=value
-# Lines starting with # are ignored.
-
-name=Aldric the Brave
-health=120
-attack=18
-defense=5
