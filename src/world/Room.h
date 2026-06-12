@@ -6,8 +6,8 @@
 #define PROYECTO_LL_PROGRAMACION_LL_ROOM_H
 
 #pragma once
-#include "Enemy.h"
-#include "ItemTypes.h"
+#include "../entities/Enemy.h"
+#include "../items/ItemTypes.h"
 #include <memory>
 #include <string>
 #include <vector>

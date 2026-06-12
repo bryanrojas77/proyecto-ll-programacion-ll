@@ -1,8 +1,8 @@
 #include <iostream>
-#include "WorldLoader.h"
-#include "Simulation.h"
-#include "EventLog.h"
-#include "ReportGenerator.h"
+#include "world/WorldLoader.h"
+#include "simulation/Simulation.h"
+#include "output/EventLog.h"
+#include "output/ReportGenerator.h"
 #include <stdexcept>
 
 int main() {

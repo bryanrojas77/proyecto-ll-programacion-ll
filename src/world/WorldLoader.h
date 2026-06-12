@@ -7,7 +7,7 @@
 
 #pragma once
 #include "World.h"
-#include "Hero.h"
+#include "../entities/Hero.h"
 #include <memory>
 #include <string>
 #include <stdexcept>

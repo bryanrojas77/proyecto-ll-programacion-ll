@@ -6,7 +6,7 @@
 #define PROYECTO_LL_PROGRAMACION_LL_EVENTLOG_H
 
 #pragma once
-#include "ISimulationObserver.h"
+#include "../simulation/ISimulationObserver.h"
 #include <string>
 #include <vector>
 #include <stdexcept>

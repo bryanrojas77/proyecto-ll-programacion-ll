@@ -6,8 +6,8 @@
 #define PROYECTO_LL_PROGRAMACION_LL_REPORTGENERATOR_H
 
 #pragma once
-#include "Simulation.h"
-#include "World.h"
+#include "../simulation/Simulation.h"
+#include "../world/World.h"
 #include <string>
 #include <stdexcept>
 

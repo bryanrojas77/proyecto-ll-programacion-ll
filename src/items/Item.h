@@ -6,7 +6,7 @@
 #define PROYECTO_LL_PROGRAMACION_LL_ITEM_H
 
 #pragma once
-#include "IEntity.h"
+#include "../entities/IEntity.h"
 #include <string>
 
 

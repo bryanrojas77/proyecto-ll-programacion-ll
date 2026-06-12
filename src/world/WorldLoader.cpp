@@ -3,8 +3,8 @@
 //
 
 #include "WorldLoader.h"
-#include "EnemyTypes.h"
-#include "ItemTypes.h"
+#include "../entities/EnemyTypes.h"
+#include "../items/ItemTypes.h"
 #include <fstream>
 #include <sstream>
 #include <stdexcept>

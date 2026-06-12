@@ -7,8 +7,8 @@
 
 #pragma once
 #include "ISimulationObserver.h"
-#include "Hero.h"
-#include "World.h"
+#include "../entities/Hero.h"
+#include "../world/World.h"
 #include <memory>
 #include <string>
 #include <vector>

@@ -3,7 +3,7 @@
 //
 
 #include "Simulation.h"
-#include "EnemyTypes.h"
+#include "../entities/EnemyTypes.h"
 #include <algorithm>
 #include <stdexcept>
 #include <string>

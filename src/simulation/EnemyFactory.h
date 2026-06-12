@@ -6,7 +6,7 @@
 #define PROYECTO_LL_PROGRAMACION_LL_ENEMYFACTORY_H
 
 #pragma once
-#include "Enemy.h"
+#include "../entities/Enemy.h"
 #include <memory>
 #include <string>
 

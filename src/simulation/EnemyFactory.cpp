@@ -3,7 +3,7 @@
 //
 
 #include "EnemyFactory.h"
-#include "EnemyTypes.h"
+#include "../entities/EnemyTypes.h"
 #include <stdexcept>
 
 std::unique_ptr<Enemy> EnemyFactory::create(const std::string& type,
