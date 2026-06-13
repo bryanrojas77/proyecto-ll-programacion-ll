@@ -9,7 +9,6 @@
 #include "../simulation/Simulation.h"
 #include "../world/World.h"
 #include <string>
-#include <stdexcept>
 
 class ReportGenerator final {
 public:

@@ -5,11 +5,8 @@
 #include "Enemy.h"
 #include <stdexcept>
 
-Enemy::Enemy(const std::string& name, int health, int attack,
-             int defense, int xpReward, int goldReward)
-    : Character(name, health, attack, defense),
-      xpReward_(xpReward), goldReward_(goldReward)
-{
+Enemy::Enemy(const std::string& name, int health, int attack, int defense, int xpReward, int goldReward)
+    : Character(name, health, attack, defense), xpReward_(xpReward), goldReward_(goldReward) {
     if (xpReward_ <= 0) {
         throw std::invalid_argument("Enemy XP reward must be positive.");
     }

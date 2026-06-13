@@ -12,8 +12,7 @@
 
 class EnemyFactory final {
 public:
-    [[nodiscard]] static std::unique_ptr<Enemy> create(const std::string& type,
-                                                        const std::string& name);
+    [[nodiscard]] static std::unique_ptr<Enemy> create(const std::string& type, const std::string& name);
 };
 
 #endif //PROYECTO_LL_PROGRAMACION_LL_ENEMYFACTORY_H

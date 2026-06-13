@@ -9,7 +9,6 @@
 #include "../simulation/ISimulationObserver.h"
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 class EventLog final : public ISimulationObserver {
 public:

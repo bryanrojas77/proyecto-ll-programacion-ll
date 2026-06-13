@@ -20,10 +20,9 @@ void Simulation::attachObserver(ISimulationObserver* observer) {
     if (!observer) {
         throw std::invalid_argument("Cannot attach a null observer.");
     }
-    const bool already = std::any_of(observers_.begin(), observers_.end(),
-                                     [observer](const ISimulationObserver* o){
-                                         return o == observer;
-                                     });
+    const bool already = std::any_of(observers_.begin(), observers_.end(), [observer](const ISimulationObserver* o){
+        return o == observer;
+    });
     if (already) {
         throw std::invalid_argument("Observer already attached.");
     }
@@ -99,9 +98,7 @@ void Simulation::resolveTraps() {
     for (Trap* trap : traps) {
         if (!trap) { continue; }
         hero_->takeDamage(trap->damage());
-        notify("TRAP triggered: " + trap->name() +
-               " deals " + std::to_string(trap->damage()) + " damage to " + hero_->name() +
-               ". HP remaining: " + std::to_string(hero_->health()));
+        notify("TRAP triggered: " + trap->name() + " deals " + std::to_string(trap->damage()) + " damage to " + hero_->name() + ". HP remaining: " + std::to_string(hero_->health()));
         trap->trigger();
         if (!hero_->isAlive()) {
             notify(hero_->name() + " was killed by the trap!");
@@ -114,18 +111,14 @@ void Simulation::resolveItems() {
     for (Weapon* w : currentRoom_->availableWeapons()) {
         if (!w) { continue; }
         hero_->boostAttack(w->attackBonus());
-        notify("WEAPON found: " + w->description() +
-               ". " + hero_->name() + " attack is now " +
-               std::to_string(hero_->attack()));
+        notify("WEAPON found: " + w->description() + ". " + hero_->name() + " attack is now " + std::to_string(hero_->attack()));
         w->collect();
     }
 
     for (Potion* p : currentRoom_->availablePotions()) {
         if (!p) { continue; }
         hero_->heal(p->healAmount());
-        notify("POTION found: " + p->description() +
-               ". " + hero_->name() + " HP is now " +
-               std::to_string(hero_->health()));
+        notify("POTION found: " + p->description() + ". " + hero_->name() + " HP is now " + std::to_string(hero_->health()));
         p->consume();
     }
 }
@@ -139,8 +132,7 @@ void Simulation::resolveCombat() {
 
     for (Enemy* enemy : enemies) {
         if (!enemy) { continue; }
-        notify("COMBAT: " + hero_->name() + " vs " + enemy->name() +
-               " [HP:" + std::to_string(enemy->health()) + "]");
+        notify("COMBAT: " + hero_->name() + " vs " + enemy->name() + " [HP:" + std::to_string(enemy->health()) + "]");
 
         while (hero_->isAlive() && enemy->isAlive()) {
             if (fightRound(*enemy)) { break; }
@@ -151,9 +143,7 @@ void Simulation::resolveCombat() {
             return;
         }
 
-        notify(hero_->name() + " defeated " + enemy->name() + "! +" +
-               std::to_string(enemy->xpReward()) + " XP, +" +
-               std::to_string(enemy->goldReward()) + " Gold.");
+        notify(hero_->name() + " defeated " + enemy->name() + "! +" + std::to_string(enemy->xpReward()) + " XP, +" + std::to_string(enemy->goldReward()) + " Gold.");
         hero_->gainExperience(enemy->xpReward());
         hero_->collectGold(enemy->goldReward());
         notify("Hero state: " + hero_->description());
@@ -163,17 +153,13 @@ void Simulation::resolveCombat() {
 bool Simulation::fightRound(Enemy& enemy) {
     const int heroDmg = hero_->attack();
     enemy.takeDamage(heroDmg);
-    notify("  " + hero_->name() + " attacks " + enemy.name() +
-           " for " + std::to_string(heroDmg) + " dmg. Enemy HP: " +
-           std::to_string(enemy.health()));
+    notify("  " + hero_->name() + " attacks " + enemy.name() + " for " + std::to_string(heroDmg) + " dmg. Enemy HP: " + std::to_string(enemy.health()));
 
     if (!enemy.isAlive()) { return true; }
 
     const int enemyDmg = enemy.attack();
     hero_->takeDamage(enemyDmg);
-    notify("  " + enemy.name() + " attacks " + hero_->name() +
-           " for " + std::to_string(enemyDmg) + " dmg. Hero HP: " +
-           std::to_string(hero_->health()));
+    notify("  " + enemy.name() + " attacks " + hero_->name() + " for " + std::to_string(enemyDmg) + " dmg. Hero HP: " + std::to_string(hero_->health()));
 
     return !enemy.isAlive();
 }

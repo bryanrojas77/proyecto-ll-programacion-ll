@@ -50,8 +50,7 @@ void ReportGenerator::generate(const Simulation& simulation, const World& world)
             file << "\n";
         }
     }
-    file << "Total rooms visited: " << visited
-         << " / " << world.roomCount() << "\n\n";
+    file << "Total rooms visited: " << visited << " / " << world.roomCount() << "\n\n";
     file << "========================================\n";
     file << "  End of report.\n";
     file << "========================================\n";

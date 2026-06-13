@@ -24,16 +24,16 @@ public:
 
     void run();
 
-    [[nodiscard]] bool    heroWon()     const noexcept { return heroWon_;     }
-    [[nodiscard]] int     turnsPlayed() const noexcept { return turnsPlayed_; }
-    [[nodiscard]] Hero*   hero()        const noexcept { return hero_.get();  }
+    [[nodiscard]] bool heroWon() const noexcept { return heroWon_;     }
+    [[nodiscard]] int turnsPlayed() const noexcept { return turnsPlayed_; }
+    [[nodiscard]] Hero* hero() const noexcept { return hero_.get();  }
 
 private:
-    std::unique_ptr<Hero>  hero_;
+    std::unique_ptr<Hero> hero_;
     std::unique_ptr<World> world_;
-    Room*                  currentRoom_ {nullptr};
-    bool                   heroWon_     {false};
-    int                    turnsPlayed_ {0};
+    Room* currentRoom_ {nullptr};
+    bool heroWon_ {false};
+    int turnsPlayed_ {0};
 
     std::vector<ISimulationObserver*> observers_;
 

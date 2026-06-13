@@ -15,8 +15,7 @@
 class Character : public IEntity {
 public:
     Character(const std::string& name, int health, int attack, int defense)
-        : name_(name), health_(health), maxHealth_(health),
-          attack_(attack), defense_(defense)
+        : name_(name), health_(health), maxHealth_(health), attack_(attack), defense_(defense)
     {
         if (name_.empty()) {
             throw std::invalid_argument("Character name cannot be empty.");
@@ -36,11 +35,11 @@ public:
 
     [[nodiscard]] std::string name() const noexcept override { return name_; }
 
-    [[nodiscard]] int health()     const noexcept { return health_; }
-    [[nodiscard]] int maxHealth()  const noexcept { return maxHealth_; }
-    [[nodiscard]] int attack()     const noexcept { return attack_; }
-    [[nodiscard]] int defense()    const noexcept { return defense_; }
-    [[nodiscard]] bool isAlive()   const noexcept { return health_ > 0; }
+    [[nodiscard]] int health() const noexcept { return health_; }
+    [[nodiscard]] int maxHealth() const noexcept { return maxHealth_; }
+    [[nodiscard]] int attack() const noexcept { return attack_; }
+    [[nodiscard]] int defense() const noexcept { return defense_; }
+    [[nodiscard]] bool isAlive() const noexcept { return health_ > 0; }
 
     void takeDamage(int rawDamage) noexcept {
         const int effective = rawDamage - defense_;

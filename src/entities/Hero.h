@@ -15,9 +15,9 @@ public:
 
     [[nodiscard]] std::string description() const noexcept override;
 
-    [[nodiscard]] int   experience() const noexcept { return experience_; }
-    [[nodiscard]] int   level()      const noexcept { return level_; }
-    [[nodiscard]] int   gold()       const noexcept { return gold_; }
+    [[nodiscard]] int experience() const noexcept { return experience_; }
+    [[nodiscard]] int level() const noexcept { return level_; }
+    [[nodiscard]] int gold() const noexcept { return gold_; }
 
     void gainExperience(int amount) noexcept;
 
@@ -25,8 +25,8 @@ public:
 
 private:
     int experience_ {0};
-    int level_      {1};
-    int gold_       {0};
+    int level_ {1};
+    int gold_ {0};
 
     void levelUp() noexcept;
 };

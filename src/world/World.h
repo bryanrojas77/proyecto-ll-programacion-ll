@@ -10,7 +10,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 class World final {
 public:

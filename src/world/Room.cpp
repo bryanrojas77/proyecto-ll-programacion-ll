@@ -5,9 +5,7 @@
 #include "Room.h"
 #include <stdexcept>
 
-Room::Room(const std::string& id,
-           const std::string& name,
-           const std::string& description)
+Room::Room(const std::string& id, const std::string& name, const std::string& description)
     : id_(id), name_(name), description_(description)
 {
     if (id_.empty()) {

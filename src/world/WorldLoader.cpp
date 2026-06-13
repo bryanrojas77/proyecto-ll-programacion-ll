@@ -12,10 +12,8 @@
 #include <cctype>
 
 std::string WorldLoader::trim(const std::string& s) {
-    const auto start = std::find_if_not(s.begin(), s.end(),
-                        [](unsigned char c){ return std::isspace(c); });
-    const auto end   = std::find_if_not(s.rbegin(), s.rend(),
-                        [](unsigned char c){ return std::isspace(c); }).base();
+    const auto start = std::find_if_not(s.begin(), s.end(), [](unsigned char c){ return std::isspace(c); });
+    const auto end = std::find_if_not(s.rbegin(), s.rend(), [](unsigned char c){ return std::isspace(c); }).base();
     return (start < end) ? std::string(start, end) : std::string{};
 }
 
@@ -51,8 +49,8 @@ std::unique_ptr<Hero> WorldLoader::loadHero(const std::string& dataDir) {
     }
 
     std::string name;
-    int health  = 0;
-    int attack  = 0;
+    int health = 0;
+    int attack = 0;
     int defense = 0;
 
     std::string line;
@@ -65,24 +63,23 @@ std::unique_ptr<Hero> WorldLoader::loadHero(const std::string& dataDir) {
         std::istringstream ss(line);
         std::string key, value;
         if (!std::getline(ss, key, '=') || !std::getline(ss, value)) {
-            throw FileFormatError("hero.txt line " + std::to_string(lineNum) +
-                                  ": expected key=value format.");
+            throw FileFormatError("hero.txt line " + std::to_string(lineNum) + ": expected key=value format.");
         }
-        key   = trim(key);
+        key = trim(key);
         value = trim(value);
 
-        if      (key == "name")    { name    = value; }
-        else if (key == "health")  { health  = parsePositiveInt(value, "hero.txt health"); }
-        else if (key == "attack")  { attack  = parsePositiveInt(value, "hero.txt attack"); }
+        if (key == "name") { name = value; }
+        else if (key == "health") { health  = parsePositiveInt(value, "hero.txt health"); }
+        else if (key == "attack") { attack  = parsePositiveInt(value, "hero.txt attack"); }
         else if (key == "defense") {
             try { defense = std::stoi(value); }
             catch (...) { throw FileFormatError("Invalid defense in hero.txt."); }
         }
     }
 
-    if (name.empty())   { throw FileFormatError("hero.txt: missing 'name' field."); }
-    if (health  == 0)   { throw FileFormatError("hero.txt: missing 'health' field."); }
-    if (attack  == 0)   { throw FileFormatError("hero.txt: missing 'attack' field."); }
+    if (name.empty()) { throw FileFormatError("hero.txt: missing 'name' field."); }
+    if (health  == 0) { throw FileFormatError("hero.txt: missing 'health' field."); }
+    if (attack  == 0) { throw FileFormatError("hero.txt: missing 'attack' field."); }
 
     return std::make_unique<Hero>(name, health, attack, defense);
 }
@@ -116,11 +113,10 @@ void WorldLoader::loadRooms(World& world, const std::string& filePath) {
             if (!std::getline(parts, id, '|') ||
                 !std::getline(parts, name, '|') ||
                 !std::getline(parts, description)) {
-                throw FileFormatError("world.txt line " + std::to_string(lineNum) +
-                                      ": ROOM requires id|name|description.");
+                throw FileFormatError("world.txt line " + std::to_string(lineNum) + ": ROOM requires id|name|description.");
             }
-            id          = trim(id);
-            name        = trim(name);
+            id = trim(id);
+            name = trim(name);
             description = trim(description);
 
             auto room = std::make_unique<Room>(id, name, description);
@@ -171,35 +167,31 @@ void WorldLoader::loadConnections(World& world, const std::string& filePath) {
         }
 
         if (segments.empty()) {
-            throw FileFormatError("world.txt line " + std::to_string(lineNum) +
-                                  ": CONNECT has no data.");
+            throw FileFormatError("world.txt line " + std::to_string(lineNum) + ": CONNECT has no data.");
         }
 
         const std::string sourceId = segments[0];
         Room* source = world.findRoom(sourceId);
         if (!source) {
-            throw FileFormatError("world.txt line " + std::to_string(lineNum) +
-                                  ": unknown room id '" + sourceId + "'.");
+            throw FileFormatError("world.txt line " + std::to_string(lineNum) + ": unknown room id '" + sourceId + "'.");
         }
 
         for (std::size_t i = 1; i < segments.size(); ++i) {
             std::istringstream kv(segments[i]);
             std::string dir, targetId;
             if (!std::getline(kv, dir, '=') || !std::getline(kv, targetId)) { continue; }
-            dir      = trim(dir);
+            dir = trim(dir);
             targetId = trim(targetId);
             Room* target = world.findRoom(targetId);
             if (!target) {
-                throw FileFormatError("world.txt line " + std::to_string(lineNum) +
-                                      ": unknown target room '" + targetId + "'.");
+                throw FileFormatError("world.txt line " + std::to_string(lineNum) + ": unknown target room '" + targetId + "'.");
             }
-            if      (dir == "north") { source->setNorth(target); }
+            if (dir == "north") { source->setNorth(target); }
             else if (dir == "south") { source->setSouth(target); }
-            else if (dir == "east")  { source->setEast(target);  }
-            else if (dir == "west")  { source->setWest(target);  }
+            else if (dir == "east") { source->setEast(target);  }
+            else if (dir == "west") { source->setWest(target);  }
             else {
-                throw FileFormatError("world.txt line " + std::to_string(lineNum) +
-                                      ": unknown direction '" + dir + "'.");
+                throw FileFormatError("world.txt line " + std::to_string(lineNum) + ": unknown direction '" + dir + "'.");
             }
         }
     }
@@ -220,31 +212,25 @@ void WorldLoader::loadEnemies(World& world, const std::string& filePath) {
 
         std::istringstream parts(line);
         std::string roomId, type, name;
-        if (!std::getline(parts, roomId, '|') ||
-            !std::getline(parts, type, '|')   ||
-            !std::getline(parts, name)) {
-            throw FileFormatError("enemies.txt line " + std::to_string(lineNum) +
-                                  ": expected roomId|type|name.");
+        if (!std::getline(parts, roomId, '|') || !std::getline(parts, type, '|') || !std::getline(parts, name)) {
+            throw FileFormatError("enemies.txt line " + std::to_string(lineNum) + ": expected roomId|type|name.");
         }
         roomId = trim(roomId);
-        type   = trim(type);
-        name   = trim(name);
+        type = trim(type);
+        name = trim(name);
 
         Room* room = world.findRoom(roomId);
         if (!room) {
-            throw FileFormatError("enemies.txt line " + std::to_string(lineNum) +
-                                  ": unknown room id '" + roomId + "'.");
+            throw FileFormatError("enemies.txt line " + std::to_string(lineNum) + ": unknown room id '" + roomId + "'.");
         }
 
         std::unique_ptr<Enemy> enemy;
-        if      (type == "goblin")   { enemy = std::make_unique<Goblin>(name);   }
+        if (type == "goblin") { enemy = std::make_unique<Goblin>(name); }
         else if (type == "skeleton") { enemy = std::make_unique<Skeleton>(name); }
-        else if (type == "dragon")   { enemy = std::make_unique<Dragon>(name);   }
+        else if (type == "dragon") { enemy = std::make_unique<Dragon>(name); }
         else {
-            throw FileFormatError("enemies.txt line " + std::to_string(lineNum) +
-                                  ": unknown enemy type '" + type + "'.");
+            throw FileFormatError("enemies.txt line " + std::to_string(lineNum) + ": unknown enemy type '" + type + "'.");
         }
-
         room->addEnemy(std::move(enemy));
     }
 }
@@ -264,33 +250,26 @@ void WorldLoader::loadItems(World& world, const std::string& filePath) {
 
         std::istringstream parts(line);
         std::string roomId, type, name, valueStr;
-        if (!std::getline(parts, roomId, '|') ||
-            !std::getline(parts, type, '|')   ||
-            !std::getline(parts, name, '|')   ||
-            !std::getline(parts, valueStr)) {
-            throw FileFormatError("items.txt line " + std::to_string(lineNum) +
-                                  ": expected roomId|type|name|value.");
+        if (!std::getline(parts, roomId, '|') || !std::getline(parts, type, '|') || !std::getline(parts, name, '|') || !std::getline(parts, valueStr)) {
+            throw FileFormatError("items.txt line " + std::to_string(lineNum) + ": expected roomId|type|name|value.");
         }
-        roomId   = trim(roomId);
-        type     = trim(type);
-        name     = trim(name);
+        roomId = trim(roomId);
+        type = trim(type);
+        name = trim(name);
         valueStr = trim(valueStr);
 
         Room* room = world.findRoom(roomId);
         if (!room) {
-            throw FileFormatError("items.txt line " + std::to_string(lineNum) +
-                                  ": unknown room id '" + roomId + "'.");
+            throw FileFormatError("items.txt line " + std::to_string(lineNum) + ": unknown room id '" + roomId + "'.");
         }
 
-        const int value = parsePositiveInt(valueStr, "items.txt line " +
-                                           std::to_string(lineNum));
+        const int value = parsePositiveInt(valueStr, "items.txt line " + std::to_string(lineNum));
 
-        if      (type == "weapon") { room->addWeapon(std::make_unique<Weapon>(name, value)); }
+        if (type == "weapon") { room->addWeapon(std::make_unique<Weapon>(name, value)); }
         else if (type == "potion") { room->addPotion(std::make_unique<Potion>(name, value)); }
-        else if (type == "trap")   { room->addTrap  (std::make_unique<Trap>  (name, value)); }
+        else if (type == "trap") { room->addTrap  (std::make_unique<Trap>  (name, value)); }
         else {
-            throw FileFormatError("items.txt line " + std::to_string(lineNum) +
-                                  ": unknown item type '" + type + "'.");
+            throw FileFormatError("items.txt line " + std::to_string(lineNum) + ": unknown item type '" + type + "'.");
         }
     }
 }

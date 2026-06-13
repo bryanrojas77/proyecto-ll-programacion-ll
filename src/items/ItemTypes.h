@@ -23,7 +23,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::string name()        const noexcept override { return name_; }
+    [[nodiscard]] std::string name() const noexcept override { return name_; }
     [[nodiscard]] std::string description() const noexcept override {
         return "Weapon: " + name_ + " (+" + std::to_string(attackBonus_) + " ATK)";
     }
@@ -49,10 +49,8 @@ public:
         }
     }
 
-    [[nodiscard]] std::string name()        const noexcept override { return name_; }
-    [[nodiscard]] std::string description() const noexcept override {
-        return "Potion: " + name_ + " (+" + std::to_string(healAmount_) + " HP)";
-    }
+    [[nodiscard]] std::string name() const noexcept override { return name_; }
+    [[nodiscard]] std::string description() const noexcept override { return "Potion: " + name_ + " (+" + std::to_string(healAmount_) + " HP)"; }
     [[nodiscard]] int healAmount() const noexcept { return healAmount_; }
 
     void consume() noexcept { used_ = true; }
@@ -75,7 +73,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::string name()        const noexcept override { return name_; }
+    [[nodiscard]] std::string name() const noexcept override { return name_; }
     [[nodiscard]] std::string description() const noexcept override {
         return "Trap: " + name_ + " (-" + std::to_string(damage_) + " HP)";
     }

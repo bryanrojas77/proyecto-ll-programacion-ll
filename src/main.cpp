@@ -7,7 +7,7 @@
 
 int main() {
     try {
-        const std::string dataDir   = "data";
+        const std::string dataDir = "data";
         const std::string outputDir = "output";
 
         auto world = WorldLoader::loadWorld(dataDir);

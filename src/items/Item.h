@@ -7,8 +7,6 @@
 
 #pragma once
 #include "../entities/IEntity.h"
-#include <string>
-
 
 class Item : public IEntity {
 public:
