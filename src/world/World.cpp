@@ -1,7 +1,3 @@
-//
-// Created by kathy on 12/6/2026.
-//
-
 #include "World.h"
 
 void World::addRoom(std::unique_ptr<Room> room) {
